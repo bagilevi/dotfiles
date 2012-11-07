@@ -13,6 +13,7 @@ alias gl="glog -n 10"
 alias gp='git push origin HEAD'
 alias gd='git diff'
 alias gitd='git diff'
+alias gitdc='git diff --cached'
 alias gc='git commit'
 alias gitc='git commit -m'
 alias gca='git commit -a'
