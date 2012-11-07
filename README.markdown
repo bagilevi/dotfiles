@@ -1,3 +1,8 @@
+# bagilevi's changes
+
+Accomodate Janus and oh-my-zsh. These are not included in this repo,
+install them before bootstrapping dotfiles.
+
 # holman does dotfiles
 
 ## dotfiles
