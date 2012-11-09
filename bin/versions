@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+output = `git tag`
+versions = output.split("\n").map(&:strip)
+versions = versions.sort_by{|v| v.scan(/\d+/).map(&:to_i) }
+
+if ARGV.include?("--tail")
+  versions = versions.last(10)
+end
+
+puts versions
+

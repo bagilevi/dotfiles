@@ -3,3 +3,4 @@ if [ "$(uname -s)" = "Darwin" ]; then
 else
   alias mvim="gvim"
 fi
+

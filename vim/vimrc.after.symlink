@@ -72,7 +72,7 @@ set incsearch              " do incremental searching
 set laststatus=2           " always show the status line
 set ignorecase             " ignore case when searching
 set nohlsearch             " don't highlight searches
-set visualbell             " shut the fuck up
+" set visualbell             " shut the fuck up
 
 
 " ---------------------------------------------------------------------------
@@ -83,3 +83,14 @@ function! StripWhitespace ()
     exec ':%s/ \+$//gc'
 endfunction
 map ,s :call StripWhitespace ()<CR>
+
+
+" Search
+
+nnoremap <C-F> :Ack 
+nnoremap <A-F> :Ack -a 
+
+" Convert ruby string to symbol
+nnoremap ,: f"F"xi:<Esc>f"xF:
+
+

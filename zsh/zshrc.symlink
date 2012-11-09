@@ -42,6 +42,7 @@ export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/u
 
 # shortcut to this dotfiles path is $ZSH
 export DOTFILES=$HOME/.dotfiles
+export PATH=$DOTFILES/bin:$PATH
 
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/code

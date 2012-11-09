@@ -6,9 +6,17 @@ then
   alias git=$hub_path
 fi
 
+function git.branch {
+  br=`git branch | grep "*"`
+  echo ${br/* /}
+}
+alias branch="git.branch"
+
+alias g=git
+
 # The rest of my fun git aliases
-alias gl='git pull --prune'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias glo="git log --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gl="glog -n 10"
 alias gp='git push origin HEAD'
 alias gd='git diff'
@@ -23,3 +31,15 @@ alias gb='git branch'
 alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
 alias gits='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
 alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
+
+alias gcm="git checkout master"
+alias gcs="git checkout stage"
+alias gcd="git checkout dev"
+
+alias gpull="git pull origin \$(branch)"
+alias gush="git push origin \$(branch)"
+alias gimme="git pull --rebase origin \$(branch)"
+alias givem="git push origin \$(branch)"
+alias givemm="gimme && givem"
+alias ga="git stash"
+alias gaa="git stash apply"
