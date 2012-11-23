@@ -31,7 +31,16 @@ nmap <d-7> 7gt
 nmap <d-8> 8gt
 nmap <d-9> 9gt
 
-set gfn=Monospace\ 9
+set gfn=Monospace\ 8
+nnoremap -5 :set gfn=Monospace\ 5<CR>
+nnoremap -6 :set gfn=Monospace\ 6<CR>
+nnoremap -7 :set gfn=Monospace\ 7<CR>
+nnoremap -8 :set gfn=Monospace\ 8<CR>
+nnoremap -9 :set gfn=Monospace\ 10<CR>
+nnoremap -0 :set gfn=Monospace\ 12<CR>
+nnoremap --0 :set gfn=Monospace\ 16<CR>
+nnoremap ---0 :set gfn=Monospace\ 24<CR>
+nnoremap ----0 :set gfn=Monospace\ 32<CR>
 
 " SHIFT-Del: Cut
 vnoremap <S-Del> "+x

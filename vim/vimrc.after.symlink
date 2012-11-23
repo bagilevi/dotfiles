@@ -94,3 +94,29 @@ nnoremap <A-F> :Ack -a
 nnoremap ,: f"F"xi:<Esc>f"xF:
 
 
+map <A-}> :tabn<CR>
+map <A-{> :tabp<CR>
+
+nnoremap ,g :e Gemfile<CR>
+nnoremap ,G :e Gemfile.lock<CR>
+nnoremap ,Re :e README<CR>
+nnoremap ,Ap :e config/application.rb<CR>
+nnoremap ,ap :e app/
+nnoremap ,mo :e app/models/
+nnoremap ,mu :e app/models/user.rb
+nnoremap ,mp :e app/models/profile.rb
+nnoremap ,co :e app/controllers/
+nnoremap ,AC :e app/controllers/application_controller.rb<CR>
+nnoremap ,ch :e app/controllers/helpers/
+nnoremap ,he :e app/controllers/
+nnoremap ,vi :e app/views/
+nnoremap ,la :e app/views/layouts/
+nnoremap ,sp :e spec/
+nnoremap ,ssu :e spec/support/
+nnoremap ,smo :e spec/models/
+nnoremap ,sco :e spec/controllers/
+nnoremap ,sre :e spec/requests/
+nnoremap ,li :e lib/
+nnoremap ,ga :e lib/gateways/
+
+nnoremap <A-S-Q> :qall<CR>

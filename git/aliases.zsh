@@ -16,8 +16,11 @@ alias g=git
 
 # The rest of my fun git aliases
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-alias glo="git log --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias glo="git log --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --no-merges"
 alias gl="glog -n 10"
+alias glom="glo master..stage"
+alias glos="glo stage..dev"
+alias glod="glo dev..HEAD"
 alias gp='git push origin HEAD'
 alias gd='git diff'
 alias gitd='git diff'
@@ -35,6 +38,10 @@ alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 alias gcm="git checkout master"
 alias gcs="git checkout stage"
 alias gcd="git checkout dev"
+alias gcmp="git checkout master && git pull origin master"
+alias gcsp="git checkout stage && git pull origin stage"
+alias gcdp="git checkout dev && git pull origin dev"
+alias gpull3="gcmp && gcsp && gcdp"
 
 alias gpull="git pull origin \$(branch)"
 alias gush="git push origin \$(branch)"
