@@ -31,11 +31,13 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
 
+DISABLE_AUTO_UPDATE="true"
 source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
+unsetopt correct
 
 # Customize to your needs...
-export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/lev/.rvm/bin:/usr/share/ruby-rvm/bin
+export PATH=./script:./bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/lev/.rvm/bin:/usr/share/ruby-rvm/bin
 
 
 
@@ -64,3 +66,4 @@ compinit
 # load every completion after autocomplete loads
 for config_file ($DOTFILES/**/completion.zsh) source $config_file
 
+unsetopt autocd

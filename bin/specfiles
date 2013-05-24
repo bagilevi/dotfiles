@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+# Takes the end of the output of RSpec in the format of 'rspec <file>:<line> # <description>'
+# outputs the file paths in a format you can paste as arguments for RSpec.
+# Use case: after running all spec, next time run only for failing files.
+
+def extract_spec_file_path(line)
+  line.sub(/^rspec /, '').sub(/\s*\#.*$/, '').sub(/\:\d+\s*/, '')
+end
+
+file_paths = []
+
+ARGF.each do |line|
+  file_paths << extract_spec_file_path(line)
+end
+
+puts file_paths.compact.uniq.join(" ")

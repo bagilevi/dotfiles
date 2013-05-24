@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+sum = 0.0
+
+ARGF.each_line do |line|
+  if line =~ %r{\[([\d\.h]+)\]}
+    timecode = $1
+    if timecode == 'h'
+      sum += 0.5
+    elsif timecode =~ /^\d+$/
+      sum += timecode.to_i
+    else
+      STDERR.puts "Unrecognized timecode: [#{timecode}]"
+    end
+  end
+end
+
+puts sum

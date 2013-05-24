@@ -1,0 +1,2 @@
+git diff --cached spec | egrep -B1 '(it|describe|context|feature|scenario) "'
+git diff          spec | egrep -B1 '(it|describe|context|feature|scenario) "'
