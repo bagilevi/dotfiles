@@ -170,3 +170,7 @@ noremap <A-j> <C-w>j
 noremap <A-k> <C-w>k
 noremap <A-l> <C-w>l
 
+noremap <Leader>j A;<Esc>J
+noremap <Leader>p orequire 'pry'; binding.pry<Esc>
+
+noremap <C-A-S-P> :CtrlPClearCache<CR>
