@@ -120,3 +120,5 @@ nnoremap ,li :e lib/
 nnoremap ,ga :e lib/gateways/
 
 nnoremap <A-S-Q> :qall<CR>
+
+set vb t_vb=
