@@ -108,7 +108,7 @@ nnoremap ,mp :e app/models/profile.rb
 nnoremap ,co :e app/controllers/
 nnoremap ,AC :e app/controllers/application_controller.rb<CR>
 nnoremap ,ch :e app/controllers/helpers/
-nnoremap ,he :e app/controllers/
+nnoremap ,he :e app/helpers/
 nnoremap ,vi :e app/views/
 nnoremap ,la :e app/views/layouts/
 nnoremap ,sp :e spec/
@@ -122,3 +122,56 @@ nnoremap ,ga :e lib/gateways/
 nnoremap <A-S-Q> :qall<CR>
 
 set vb t_vb=
+
+map <A-1> 1gt
+map <A-2> 2gt
+map <A-3> 3gt
+map <A-4> 4gt
+map <A-5> 5gt
+map <A-6> 6gt
+map <A-7> 7gt
+map <A-8> 8gt
+map <A-9> 9gt
+
+imap <A-1> <Esc>1gt
+imap <A-2> <Esc>2gt
+imap <A-3> <Esc>3gt
+imap <A-4> <Esc>4gt
+imap <A-5> <Esc>5gt
+imap <A-6> <Esc>6gt
+imap <A-7> <Esc>7gt
+imap <A-8> <Esc>8gt
+imap <A-9> <Esc>9gt
+
+noremap <leader>F :%s/,\ focus:\ true//ge<CR>
+noremap <leader>f  ? it <CR>2f"a, focus: true<Esc>
+
+
+" source: http://www.vimninjas.com/2012/08/30/local-vimrc/
+" Do we have local vimrc?
+if filereadable('.vimrc.local')
+  " If so, go ahead and load it.
+  source .vimrc.local
+endif
+
+set textwidth=0
+set wrapmargin=0
+
+let g:RspecBin="zeus rspec"
+
+noremap <A-r>f :RunSpec<CR>zRn
+noremap <A-r>l :RunSpecLine<CR>zRn
+noremap <A-r>a :RunSpecs<CR>zRn
+
+noremap <A-w> :q<CR>
+noremap <A-c> <C-w>3j:q<CR>
+
+noremap <A-h> <C-w>h
+noremap <A-j> <C-w>j
+noremap <A-k> <C-w>k
+noremap <A-l> <C-w>l
+
+noremap <Leader>j A;<Esc>J
+noremap <Leader>p orequire 'pry'; binding.pry<Esc>
+
+noremap <C-A-S-P> :CtrlPClearCache<CR>

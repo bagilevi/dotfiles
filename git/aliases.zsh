@@ -33,7 +33,9 @@ alias gco='git checkout'
 alias gb='git branch'
 alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
 alias gits='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
+alias gitss='git status -sb; gitdcspec'
 alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
+alias sqdev="x=`branch`; git co dev && git merge --squash $x"
 
 alias gcm="git checkout master"
 alias gcs="git checkout stage"
@@ -42,6 +44,7 @@ alias gcmp="git checkout master && git pull origin master"
 alias gcsp="git checkout stage && git pull origin stage"
 alias gcdp="git checkout dev && git pull origin dev"
 alias gpull3="gcmp && gcsp && gcdp"
+alias gpullm="gcmp && gcsp && git merge master && gcdp && git merge stage"
 
 alias gpull="git pull origin \$(branch)"
 alias gush="git push origin \$(branch)"

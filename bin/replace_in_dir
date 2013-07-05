@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+# Usage: replace_in_dir . "x" "y"
+
+def prompt(label)
+  print "#{label}: "
+  STDIN.gets
+end
+
+
+dir = ARGV[0] || prompt("Directory")
+pattern = ARGV[1] || prompt("Search for")
+replacement = ARGV[2] || prompt("Replace with")
+
+puts "Replacing '#{pattern.inspect}' with '#{replacement.inspect}' in #{dir}"
+Dir["#{dir}/**"].each do |path|
+  content = File.read(path)
+  new_content = content.gsub(pattern, replacement)
+  if content != new_content
+    puts "Writing #{path}..."
+    File.open(path, 'w') do |f|
+      f.write(new_content)
+    end
+  end
+end

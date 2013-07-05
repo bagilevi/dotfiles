@@ -8,7 +8,8 @@
         name = Levente Bagi
         email = bagilevi@gmail.com
 [credential]
-        helper = osxkeychain
+        #helper = osxkeychain
+        helper = store
 [alias]
         co = checkout
         promote = !$ZSH/bin/git-promote
