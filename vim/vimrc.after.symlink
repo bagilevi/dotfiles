@@ -305,8 +305,10 @@ nnoremap <Leader>8 :vertical resize 83<CR>
 
 set winwidth=83
 set winminwidth=35
-set winheight=50
+
+set winheight=10
 set winminheight=10
+set winheight=999
 
 
 
