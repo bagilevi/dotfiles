@@ -146,6 +146,7 @@ nnoremap ,ga :e lib/gateways/
 
 nnoremap <A-S-Q> :qall<CR>
 
+set vb t_vb=
 
 map <Leader>1 1gt
 map <Leader>2 2gt
