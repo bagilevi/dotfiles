@@ -1,4 +1,8 @@
-colorscheme default
+colorscheme ir_black
+let s:uname = system("echo -n \"$(uname)\"")
+if s:uname == "Darwin"
+  colorscheme default
+endif
 set noswapfile
 set notimeout
 set ttimeout
@@ -96,7 +100,7 @@ set mat=5                  " duration to show matching brace (1/10 sec)
 set incsearch              " do incremental searching
 set laststatus=2           " always show the status line
 set ignorecase             " ignore case when searching
-set nohlsearch             " don't highlight searches
+set hlsearch             " don't highlight searches
 " set visualbell             " shut the fuck up
 
 
