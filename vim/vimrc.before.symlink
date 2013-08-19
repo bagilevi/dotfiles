@@ -1,0 +1,2 @@
+call janus#disable_plugin('molokai')
+call janus#disable_plugin('sampler-pack')

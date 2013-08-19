@@ -6,7 +6,7 @@
         protocol = https
 [user]
         name = Levente Bagi
-        email = bagilevi@gmail.com
+	    email = bagilevi@gmail.com
 [credential]
         #helper = osxkeychain
         helper = store
@@ -16,6 +16,7 @@
         wtf     = !$ZSH/bin/git-wtf
         rank-contributers = !$ZSH/bin/git-rank-contributers
         count   = !git shortlog -sn
+        p = cherry-pick
 [color]
         diff = auto
         status = auto

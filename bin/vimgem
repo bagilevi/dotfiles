@@ -1,0 +1,9 @@
+#!/bin/bash
+P=$(bundle show $1 | tail -1 | grep "/$1")
+
+if [[ $? == 0 ]]; then
+  echo "Opening $P"
+  vim $P
+else
+  echo "Not found"
+fi

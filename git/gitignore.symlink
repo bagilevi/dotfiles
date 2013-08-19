@@ -5,3 +5,4 @@
 *.rbc
 .vimrc.local
 .qvimrc.local
+rdoc

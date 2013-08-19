@@ -69,3 +69,5 @@ for config_file ($DOTFILES/**/completion.zsh) source $config_file
 unsetopt autocd
 
 cd ..;1
+
+#bindkey -v

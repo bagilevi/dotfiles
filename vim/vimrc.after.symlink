@@ -1,4 +1,10 @@
+colorscheme ir_black
 set noswapfile
+set notimeout
+set ttimeout
+set timeoutlen=0
+
+"set t_Co=256
 
 " ----------------------------------------------------------------------------
 "  Text Formatting
@@ -17,6 +23,21 @@ set formatoptions+=n       " support for numbered/bullet lists
 "set textwidth=80           " wrap at 80 chars by default
 set virtualedit=block      " allow virtual edit in visual block ..
 
+highlight OverLength ctermfg=darkred guibg=#592929
+"match OverLength /\%81v.\+/
+
+"set colorcolumn=80
+"highlight colorcolumn ctermbg=darkgrey ctermfg=1
+
+"au BufWinEnter * let w:m1=matchadd('Search', '\%<79v.\%>79v', -1)
+"au BufWinEnter * let w:m2=matchadd('OverLength', '\%>79v.\+', -1)
+"highlight OverLength ctermfg=darkred guibg=#592929
+
+let &colorcolumn=join(range(80,999),",")
+highlight ColorColumn ctermbg=8 guibg=#111111 ctermfg=1
+"jkdsfhalsdf iuasd f7284 iuzb slkcjag78 3174 rkjgzsdl;kfga78 362 3duhGASDfasdjlfg asjldg ofa8stf 0a68sdtf
+"2345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+
 " ----------------------------------------------------------------------------
 "  Remapping
 " ----------------------------------------------------------------------------
@@ -26,6 +47,10 @@ let mapleader = ","
 
 " exit to normal mode with 'jj'
 inoremap jj <ESC>
+inoremap jjj <ESC>jjj
+inoremap kkk <ESC>kkk
+inoremap lll <ESC>lll
+inoremap hhh <ESC>hhh
 
 
 " reflow paragraph with Q in normal and visual mode
@@ -122,15 +147,15 @@ nnoremap ,ga :e lib/gateways/
 nnoremap <A-S-Q> :qall<CR>
 
 
-map <A-1> 1gt
-map <A-2> 2gt
-map <A-3> 3gt
-map <A-4> 4gt
-map <A-5> 5gt
-map <A-6> 6gt
-map <A-7> 7gt
-map <A-8> 8gt
-map <A-9> 9gt
+map <Leader>1 1gt
+map <Leader>2 2gt
+map <Leader>3 3gt
+map <Leader>4 4gt
+map <Leader>5 5gt
+map <Leader>6 6gt
+map <Leader>7 7gt
+map <Leader>8 8gt
+map <Leader>9 9gt
 
 imap <A-1> <Esc>1gt
 imap <A-2> <Esc>2gt
@@ -142,8 +167,10 @@ imap <A-7> <Esc>7gt
 imap <A-8> <Esc>8gt
 imap <A-9> <Esc>9gt
 
-noremap <leader>F :%s/,\ focus:\ true//ge<CR>
-noremap <leader>f  ? it <CR>2f"a, focus: true<Esc>
+"noremap <leader>F :%s/,\ focus:\ true//ge<CR>
+"noremap <leader>f  ? it <CR>2f"a, focus: true<Esc>
+noremap <Leader>f :Ack 
+noremap <Leader>F :Ack -a 
 
 
 " source: http://www.vimninjas.com/2012/08/30/local-vimrc/
@@ -174,3 +201,188 @@ noremap <Leader>j A;<Esc>J
 noremap <Leader>p orequire 'pry'; binding.pry<Esc>
 
 noremap <C-A-S-P> :CtrlPClearCache<CR>
+
+" Task management
+noremap <A-t>c <Esc>:.s/^[^\-]*\-/CURRENT-/g<CR>
+noremap <A-t>d <Esc>:.s/^[^\-]*\-/Done-/g<CR>
+noremap <A-t>x <Esc>:.s/^[^\-]*\-/-/g<CR>
+
+
+" noremap =y "+y
+" noremap =p "+p
+" noremap =P "+P
+" noremap =d "+d
+
+noremap =y :w !xsel --clipboard<CR><CR>
+noremap =p :r !xsel --clipboard<CR><CR>
+
+" Rspec
+function! RSpecFile()
+  execute("!clear && rspec " . expand("%p"))
+endfunction
+map <leader>R :call RSpecFile() <CR>
+command! RSpecFile call RSpecFile()
+
+function! RSpecCurrent()
+  execute("!clear && rspec " . expand("%p") . ":" . line("."))
+endfunction
+command! RSpecCurrent call RSpecCurrent()
+
+
+noremap <leader>rr  :execute("!rspec " . expand("%p") . ":" . line("."))<CR>
+noremap <leader>rf  :execute("!rspec " . expand("%p"))<CR>
+noremap <leader>zrr :execute("!zpec " . expand("%p") . ":" . line("."))<CR>
+noremap <leader>zrf :execute("!zpec " . expand("%p"))<CR>
+noremap <leader>srr :execute("!spec " . expand("%p") . ":" . line("."))<CR>
+noremap <leader>srf :execute("!spec " . expand("%p"))<CR>
+
+" copy FILE:LINE to clipboard
+noremap =l :execute("!echo '" . expand("%p") . ":" . line(".") . "' \| xsel --clipboard")<CR><CR>
+" copy FILE to clipboard
+noremap =f :execute("!echo '" . expand("%p") . "' \| xsel --clipboard")<CR><CR>
+
+noremap <leader><C-p> :CtrlPClearCache<CR>
+
+noremap <leader>gs :!git status<CR>
+noremap <leader>gl :!git log<CR>
+noremap <leader>gd :!git diff<CR>
+noremap <leader>gD :!git diff --cached<CR>
+
+noremap <leader>] :tabn<CR>
+noremap <leader>[ :tabp<CR>
+
+noremap \] :tabn<CR>
+noremap \[ :tabp<CR>
+
+noremap '' :tabn<CR>
+noremap ;; :tabp<CR>
+
+noremap \' :BuffergatorTabsOpen<CR>
+
+call janus#add_mapping('nerdcommenter', 'map', '<C-/>', '<plug>NERDCommenterToggle<CR>')
+call janus#add_mapping('nerdcommenter', 'imap', '<c-/>', '<esc><plug>nerdcommentertoggle<cr>i')
+call janus#add_mapping('nerdcommenter', 'map', '<Leader>/', '<plug>NERDCommenterToggle<CR>')
+call janus#add_mapping('nerdcommenter', 'imap', '<A-/>', '<Esc><plug>NERDCommenterToggle<CR>i')
+
+" rspec: wrap the entire line in 'expect(<line>).to eq(<cursor>)'
+imap <C-e> <Esc>^iexpect(<Esc>A).to eq()<Esc>i
+
+
+"nnoremap <C-J> <C-W><C-J>
+"nnoremap <C-K> <C-W><C-K>
+"nnoremap <C-L> <C-W><C-L>
+"nnoremap <C-H> <C-W><C-H>
+if exists('$TMUX')
+  function! TmuxOrSplitSwitch(wincmd, tmuxdir)
+    let previous_winnr = winnr()
+    execute "wincmd " . a:wincmd
+    if previous_winnr == winnr()
+" The sleep and & gives time to get back to vim so tmux's focus tracking
+" can kick in and send us our ^[[O
+      execute "silent !sh -c 'sleep 0.01; tmux select-pane -" . a:tmuxdir . "' &"
+      redraw!
+    endif
+  endfunction
+
+  let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
+  let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
+  let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
+
+  nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
+  nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
+  nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
+  nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
+else
+  map <C-h> <C-w>h
+  map <C-j> <C-w>j
+  map <C-k> <C-w>k
+  map <C-l> <C-w>l
+endif
+
+
+nnoremap <Leader>8 :vertical resize 83<CR>
+
+set winwidth=83
+set winminwidth=35
+set winheight=50
+set winminheight=10
+
+
+
+function! ShowRoutes()
+  " Requires 'scratch' plugin
+  :topleft 100 :split __Routes__
+  " Make sure Vim doesn't write __Routes__ as a file
+  :set buftype=nofile
+  " Delete everything
+  :normal 1GdG
+  " Put routes output in buffer
+  :0r! rake -s routes
+  " Size window to number of lines (1 plus rake output length)
+  :exec ":normal " . line("$") . _ "
+  " Move cursor to bottom
+  :normal 1GG
+  " Delete empty trailing line
+  :normal dd
+endfunction
+map <leader>gR :call ShowRoutes()<cr>
+
+
+nnoremap <leader><leader> <c-^>
+
+nnoremap <Leader>' F"r'<Esc>f"r'<Esc>
+nnoremap <Leader>" F'r"<Esc>f'r"<Esc>
+
+function! RunTests(filename)
+    " Write the file and run tests for the given filename
+    :w
+    :silent !echo;echo;echo;echo;echo
+    "exec ":!" . t:test_cmd . " " . a:filename
+    exec ":!tmux send-keys -t second:1.1 \"" . t:test_cmd . " " . a:filename . "\" Enter"
+endfunction
+
+function! SetTestFile()
+    " Set the spec file that tests will be run for.
+    let t:grb_test_file=@%
+endfunction
+
+function! RunTestFile(...)
+    if a:0
+        let command_suffix = a:1
+    else
+        let command_suffix = ""
+    endif
+
+    " Run the tests for the previously-marked file.
+    let in_spec_file = match(expand("%"), '_spec.rb$') != -1
+    if in_spec_file
+        call SetTestFile()
+    elseif !exists("t:grb_test_file")
+        return
+    end
+    call RunTests(t:grb_test_file . command_suffix)
+endfunction
+
+function! RunNearestTest()
+    let spec_line_number = line('.')
+    call RunTestFile(":" . spec_line_number)
+endfunction
+
+function! SetTestCmd(cmd)
+    let t:test_cmd=a:cmd
+endfunction
+call SetTestCmd("zpec")
+
+nnoremap <Leader>sz :call SetTestCmd("time zpec")<CR>
+nnoremap <Leader>sr :call SetTestCmd("time rspec")<CR>
+nnoremap <Leader>ss :call SetTestCmd("time spec")<CR>
+
+" Run this file
+map <silent> <leader>t :call RunTestFile()<cr><cr>
+" Run only the example under the cursor
+map <leader>T :call RunNearestTest()<cr><cr>
+" Run all test files
+map <leader>a :call RunTests('spec')<cr><cr>
+
+
+":!tmux send-keys -t 2:0.0 "zpec %:p" Enter

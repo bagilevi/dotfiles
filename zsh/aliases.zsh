@@ -1,5 +1,5 @@
 alias reload!='. ~/.zshrc'
-alias dots="gvim $DOTFILES"
+alias dots="vim $DOTFILES"
 
 if [[ "$(uname -a)" =~ "Ubuntu" ]]; then
   alias ack="ack-grep"
