@@ -1,4 +1,4 @@
-colorscheme ir_black
+colorscheme default
 set noswapfile
 set notimeout
 set ttimeout
@@ -23,7 +23,7 @@ set formatoptions+=n       " support for numbered/bullet lists
 "set textwidth=80           " wrap at 80 chars by default
 set virtualedit=block      " allow virtual edit in visual block ..
 
-highlight OverLength ctermfg=darkred guibg=#592929
+"highlight OverLength ctermfg=darkred guibg=#592929
 "match OverLength /\%81v.\+/
 
 "set colorcolumn=80
@@ -34,7 +34,7 @@ highlight OverLength ctermfg=darkred guibg=#592929
 "highlight OverLength ctermfg=darkred guibg=#592929
 
 let &colorcolumn=join(range(80,999),",")
-highlight ColorColumn ctermbg=8 guibg=#111111 ctermfg=1
+highlight ColorColumn ctermbg=15 guibg=#111111 ctermfg=1
 "jkdsfhalsdf iuasd f7284 iuzb slkcjag78 3174 rkjgzsdl;kfga78 362 3duhGASDfasdjlfg asjldg ofa8stf 0a68sdtf
 "2345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
 
