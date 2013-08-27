@@ -100,7 +100,7 @@ set mat=5                  " duration to show matching brace (1/10 sec)
 set incsearch              " do incremental searching
 set laststatus=2           " always show the status line
 set ignorecase             " ignore case when searching
-set hlsearch             " don't highlight searches
+set nohlsearch             " don't highlight searches
 " set visualbell             " shut the fuck up
 
 
@@ -345,7 +345,8 @@ function! RunTests(filename)
     :w
     :silent !echo;echo;echo;echo;echo
     "exec ":!" . t:test_cmd . " " . a:filename
-    exec ":!tmux send-keys -t second:1.1 \"" . t:test_cmd . " " . a:filename . "\" Enter"
+    "exec ":!tmux send-keys -t second:1.1 \"" . t:test_cmd . " " . a:filename . "\" Enter"
+    exec g:test_executor_before . t:test_cmd . " " . a:filename . g:test_executor_after
 endfunction
 
 function! SetTestFile()
@@ -384,6 +385,18 @@ nnoremap <Leader>sz :call SetTestCmd("time zpec")<CR>
 nnoremap <Leader>sr :call SetTestCmd("time rspec")<CR>
 nnoremap <Leader>ss :call SetTestCmd("time spec")<CR>
 
+function! SetTestExecutor(c_before, c_after)
+    let g:test_executor_before=a:c_before
+    let g:test_executor_after=a:c_after
+endfunction
+call SetTestExecutor(":!tmux send-keys -t second:1.1 \"", "\" Enter")
+
+nnoremap <Leader>sa :call SetTestExecutor(":!tmux send-keys -t 1.2 \"", "\" Enter")<CR>
+nnoremap <Leader>sb :call SetTestExecutor(":!tmux send-keys -t 2.1 \"", "\" Enter")<CR>
+nnoremap <Leader>sc :call SetTestExecutor(":!tmux send-keys -t second:1.1 \"", "\" Enter")<CR>
+nnoremap <Leader>si :call SetTestExecutor(":!", "")<CR>
+
+
 " Run this file
 map <silent> <leader>t :call RunTestFile()<cr><cr>
 " Run only the example under the cursor
@@ -393,3 +406,5 @@ map <leader>a :call RunTests('spec')<cr><cr>
 
 
 ":!tmux send-keys -t 2:0.0 "zpec %:p" Enter
+
+nnoremap <Leader>,c :let @/ = ""<CR>
