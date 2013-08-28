@@ -166,5 +166,6 @@ bind X next-layout
 bind Z previous-layout
 
 # Make pbcopy work on OS X - also needs `brew install reattach-to-user-namespace`
-set-option -g default-command "reattach-to-user-namespace -l zsh" 
+#set-option -g default-command "reattach-to-user-namespace -l zsh" 
+## ^^^ This made PREFIX c (create window) fail on Ubuntu
 
