@@ -71,3 +71,8 @@ unsetopt autocd
 cd ..;1
 
 #bindkey -v
+
+export TERM=xterm-256color
+
+source ~/.dotfiles/git/git-flow-completion.zsh
+

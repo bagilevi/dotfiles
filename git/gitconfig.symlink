@@ -33,3 +33,4 @@
         prompt = false
 [help]
         autocorrect = 1
+[http]

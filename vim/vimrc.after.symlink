@@ -1,4 +1,4 @@
-colorscheme ir_black
+colorscheme default
 let s:uname = system("echo -n \"$(uname)\"")
 if s:uname == "Darwin"
   colorscheme default
@@ -8,7 +8,9 @@ set notimeout
 set ttimeout
 set timeoutlen=0
 
-"set t_Co=256
+set t_Co=256
+"set t_AB=<Esc>[48;5;%dm
+"set t_AF=<Esc>[38;5;%dm
 
 " ----------------------------------------------------------------------------
 "  Text Formatting
@@ -37,8 +39,8 @@ set virtualedit=block      " allow virtual edit in visual block ..
 "au BufWinEnter * let w:m2=matchadd('OverLength', '\%>79v.\+', -1)
 "highlight OverLength ctermfg=darkred guibg=#592929
 
-let &colorcolumn=join(range(80,999),",")
-highlight ColorColumn ctermbg=15 guibg=#111111 ctermfg=1
+let &colorcolumn=join(range(101,999),",")
+highlight ColorColumn ctermbg=0 guibg=#111111 ctermfg=1
 "jkdsfhalsdf iuasd f7284 iuzb slkcjag78 3174 rkjgzsdl;kfga78 362 3duhGASDfasdjlfg asjldg ofa8stf 0a68sdtf
 "2345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
 
@@ -310,9 +312,9 @@ nnoremap <Leader>8 :vertical resize 83<CR>
 set winwidth=83
 set winminwidth=35
 
-set winheight=10
-set winminheight=10
-set winheight=999
+"set winheight=10
+"set winminheight=10
+"set winheight=999
 
 
 
@@ -408,3 +410,10 @@ map <leader>a :call RunTests('spec')<cr><cr>
 ":!tmux send-keys -t 2:0.0 "zpec %:p" Enter
 
 nnoremap <Leader>,c :let @/ = ""<CR>
+
+hi Comment ctermfg=95 cterm=none
+hi String ctermfg=4 cterm=none
+hi rubySymbol ctermfg=3 cterm=none
+hi rubySymbol ctermfg=39 cterm=none
+hi rubyInteger ctermfg=170 cterm=none
+
