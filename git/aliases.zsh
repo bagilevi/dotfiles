@@ -15,8 +15,8 @@ alias branch="git.branch"
 alias g=git
 
 # The rest of my fun git aliases
-alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-alias glo="git log --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --no-merges"
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset %Cgreen%ci%Creset %an: %s - %Creset %C(yellow)%d%Creset' --abbrev-commit "
+alias glo="git log --pretty=format:'%Cred%h%Creset %Cgreen%ci%Creset %an: %s - %Creset %C(yellow)%d%Creset' --abbrev-commit  --no-merges"
 alias gl="glog -n 10"
 alias glom="glo master..stage"
 alias glos="glo stage..dev"

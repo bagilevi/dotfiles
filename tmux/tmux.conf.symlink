@@ -3,6 +3,8 @@ unbind C-b
 set-option -g prefix C-a
 bind-key C-a send-prefix
 
+bind -n C-s choose-tree
+
 set -s escape-time 0
 bind C-p run "tmux set-buffer \"$(xsel --clipboard)\"; tmux paste-buffer"
 bind C-y run "tmux show-buffer | xsel --clipboard"

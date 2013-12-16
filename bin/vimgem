@@ -2,9 +2,9 @@
 P=$(bundle show $1 | tail -1 | grep "/$1")
 
 if [[ $? == 0 ]]; then
-  echo "Opening $P"
+  echo "cd $P"
   cd $P
-  vim
+  vim lib
 else
   echo "Not found"
 fi
