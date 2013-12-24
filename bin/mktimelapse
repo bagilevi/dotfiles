@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+bitrate = 64 * 1024 * 1024
+
+def matches_pattern?(f)
+  f.downcase =~ /\.jpg$/
+end
+
+i = 0
+Dir['*'].sort.each do |filename|
+  if File.file?(filename) && matches_pattern?(filename)
+    i += 1
+    new_filename = "#{i.to_s.rjust(6, "0")}.jpg"
+    if (dirname = File.dirname(filename)) != '.'
+      new_filename = "#{dirname}/#{new_filename}"
+    end
+    puts "Renaming: #{filename} -> #{new_filename}"
+    File.rename(filename, new_filename)
+  end
+end
+
+
+`ffmpeg -i %06d.jpg -vcodec mpeg4 -b #{bitrate} -s 1920x1080 output-#{bitrate}.avi`
