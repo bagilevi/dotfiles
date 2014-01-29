@@ -37,7 +37,7 @@ unsetopt correct_all
 unsetopt correct
 
 # Customize to your needs...
-export PATH=./script:./bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/lev/.rvm/bin:/usr/share/ruby-rvm/bin:/opt/local/bin:~/app/sbt/bin:$PATH
+export PATH=./script:./bin:~/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/lev/.rvm/bin:/usr/share/ruby-rvm/bin:/opt/local/bin:~/app/sbt/bin:$PATH
 
 
 
@@ -76,3 +76,5 @@ export TERM=xterm-256color
 
 source ~/.dotfiles/git/git-flow-completion.zsh
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
