@@ -1,8 +1,9 @@
+
 alias reload!='. ~/.zshrc'
-alias cmm="cd ~/code/membership"
-alias cmc="cd ~/code/membership_client"
-alias cmi="cd ~/code/membership_integration"
-alias cem="cd ~/code/embedlogin"
+alias sqex=". ~/bin/squareenix"
+
+
+alias cmm="sqex"
 
 if [[ "$(uname -a)" =~ "Ubuntu" ]]; then
   alias ack="ack-grep"
