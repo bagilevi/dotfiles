@@ -1,0 +1,6 @@
+ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+\curl -sSL https://get.rvm.io | bash -s stable --ruby
+
+brew install reattach-to-user-namespace
+brew install ack
+brew install tmux
