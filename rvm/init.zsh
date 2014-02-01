@@ -1,5 +1,4 @@
-PATH=$PATH:$HOME/.rvm/bin
-PATH=$PATH:/usr/share/ruby-rvm/bin
+PATH=/usr/share/ruby-rvm/bin:$HOME/.rvm/bin:$PATH
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 

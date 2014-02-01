@@ -32,10 +32,12 @@ ZSH_THEME="robbyrussell"
 plugins=(git)
 
 DISABLE_AUTO_UPDATE="true"
+# echo "zshrc: loading oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
 unsetopt correct
 
+# echo "zshrc: setting PATH"
 # Customize to your needs...
 export PATH=./script:./bin:~/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/lev/.rvm/bin:/usr/share/ruby-rvm/bin:/opt/local/bin:~/app/sbt/bin:$PATH
 
@@ -49,9 +51,11 @@ export PATH=$DOTFILES/bin:$PATH
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/code
 
+# echo "zshrc: loading dotfile *.zsh"
 # source every .zsh file in this rep
 for config_file ($DOTFILES/**/*.zsh) source $config_file
 
+# echo "zshrc: loading .localrc"
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
 if [[ -a ~/.localrc ]]
@@ -59,10 +63,12 @@ then
   source ~/.localrc
 fi
 
+# echo "zshrc: compinit"
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
 compinit
 
+# echo "zshrc: completion.zsh"
 # load every completion after autocomplete loads
 for config_file ($DOTFILES/**/completion.zsh) source $config_file
 
@@ -74,7 +80,10 @@ cd ..;1
 
 export TERM=xterm-256color
 
+# echo "zshrc: git-flow-completion"
 source ~/.dotfiles/git/git-flow-completion.zsh
 
+# echo "zshrc: PATH"
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
+
