@@ -87,3 +87,6 @@ source ~/.dotfiles/git/git-flow-completion.zsh
 
 PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
 
+GOPATH=/Users/levente/code/play/gocode
+PATH=$PATH:$GOPATH/bin
+
