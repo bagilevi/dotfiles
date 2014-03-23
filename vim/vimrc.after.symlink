@@ -220,8 +220,12 @@ noremap <A-t>x <Esc>:.s/^[^\-]*\-/-/g<CR>
 " noremap =P "+P
 " noremap =d "+d
 
-noremap =y :w !xsel --clipboard<CR><CR>
-noremap =p :r !xsel --clipboard<CR><CR>
+" OS X copy-paste (pbcopy is aliased to xsel on Linux)
+nmap =p :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+imap =p <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+nmap =y :.w !pbcopy<CR><CR>
+vmap =y :w !pbcopy<CR><CR>
+
 
 " Rspec
 function! RSpecFile()
