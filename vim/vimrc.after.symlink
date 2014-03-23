@@ -346,6 +346,18 @@ nnoremap <leader><leader> <c-^>
 nnoremap <Leader>' F"r'<Esc>f"r'<Esc>
 nnoremap <Leader>" F'r"<Esc>f'r"<Esc>
 
+function! RunThisFile(filename)
+    :w
+    :silent !echo;echo;echo;echo;echo
+    "exec ":!" . t:test_cmd . " " . a:filename
+    "exec ":!tmux send-keys -t second:1.1 \"" . t:test_cmd . " " . a:filename . "\" Enter"
+    exec ":!tmux send-keys -t .2 C-c \"" . t:run_cmd . " " . a:filename . t:run_post . "\" Enter"
+endfunction
+
+let t:run_cmd="ruby"
+let t:run_post=""
+nnoremap <Leader>; :call RunThisFile(@%)<CR><CR>
+
 function! RunTests(filename)
     " Write the file and run tests for the given filename
     :w
