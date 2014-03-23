@@ -15,7 +15,7 @@ ZSH_THEME="robbyrussell"
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -51,9 +51,13 @@ export PATH=$DOTFILES/bin:$PATH
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/code
 
-# echo "zshrc: loading dotfile *.zsh"
+#echo "zshrc: loading dotfile *.zsh"
 # source every .zsh file in this rep
-for config_file ($DOTFILES/**/*.zsh) source $config_file
+for config_file ($DOTFILES/**/*.zsh); do
+  #echo "            $config_file"
+  source $config_file
+done
+#echo "zshrc: loaded *.zsh"
 
 # echo "zshrc: loading .localrc"
 # use .localrc for SUPER SECRET CRAP that you don't
@@ -68,19 +72,19 @@ fi
 autoload -U compinit
 compinit
 
-# echo "zshrc: completion.zsh"
+#echo "zshrc: completion.zsh"
 # load every completion after autocomplete loads
 for config_file ($DOTFILES/**/completion.zsh) source $config_file
 
 unsetopt autocd
 
-cd ..;1
+#cd ..;1
 
 #bindkey -v
 
 export TERM=xterm-256color
 
-# echo "zshrc: git-flow-completion"
+#echo "zshrc: git-flow-completion"
 source ~/.dotfiles/git/git-flow-completion.zsh
 
 # echo "zshrc: PATH"
