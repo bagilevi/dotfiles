@@ -6,8 +6,9 @@ bind-key C-a send-prefix
 bind -n C-s choose-tree
 
 set -s escape-time 0
-bind C-p run "tmux set-buffer \"$(xsel --clipboard)\"; tmux paste-buffer"
-bind C-y run "tmux show-buffer | xsel --clipboard"
+# pbcopy aliased to xsel on Linux
+bind C-y run "tmux show-buffer | reattach-to-user-namespace-tmux pbcopy"
+bind C-p run "reattach-to-user-namespace-tmux pbpaste | tmux load-buffer - && tmux paste-buffer"
 
 # use regular ctrl+hjkl to switch between tmux and vim panes
 # Requires vim to respond to ctrl+hjkl in a certain way:

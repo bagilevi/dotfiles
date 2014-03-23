@@ -35,7 +35,7 @@ alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
 alias gits='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
 alias gitss='git status -sb; gitdcspec'
 alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
-alias sqdev="x=`branch`; git co dev && git merge --squash $x"
+alias sqdev="x=\`branch\`; git co dev && git merge --squash \$x"
 
 alias gcm="git checkout master"
 alias gcs="git checkout stage"
